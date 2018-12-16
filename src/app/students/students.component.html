@@ -1,0 +1,40 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<h2>Mahasiswa</h2>
+
+<div class="form-group">
+  <label>
+    Nama Mahasiswa :
+  </label>
+
+  <input #heroName />
+
+
+  <label>
+    NIM :
+  </label>
+
+  <input #heroNIM />
+</div>
+
+<button 
+(click)="add(heroName.value, heroNIM.value); 
+heroName.value=''">
+  add
+</button>
+
+
+<ul class="students">
+  <li *ngFor="let student of students">
+    <a routerLink="/detail/{{student.id}}">
+      <span class="badge">{{student.id}}</span> {{student.name}}
+    </a>
+    <button class="delete" title="delete student" (click)="delete(student)"> x </button>
+  </li>
+</ul>

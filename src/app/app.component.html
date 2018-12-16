@@ -1,57 +1,69 @@
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-
-  <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-          </button>
-          
+<nav class="navbar navbar-expand-sm" style="background-color: #2C3E50">
+  <h1 class="d-flex align-items-center">Mahasiswa</h1>
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard"> Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/students">Mahasiswa</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownId">
+          <a class="dropdown-item" href="#">Action 1</a>
+          <a class="dropdown-item" href="#">Action 2</a>
         </div>
-        <div class="collapse navbar-collapse">
-            <h1>Mahasiswa</h1>
-            <!-- <ul class="nav navbar-nav">
-                <li><h1>Mahasiswa</h1></li>
-            </ul> -->
-          <ul class="nav navbar-nav">
-            <li><a routerLink="/dashboard">Dashboard</a></li>
-          </ul>
-          <ul class="nav navbar-nav">
-              <li><a routerLink="/heroes">Heroes</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <app-hero-search></app-hero-search>
-            <!-- <li><span class="glyphicon glyphicon-search"></span><input type="text" name="search"></li> -->
-            <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-          </ul>
-        </div>
+      </li> -->
 
-        <!-- <div class="d-flex flex-row-reverse bg-secondary">
-          <div class="p-2 bg-info">Flex item 1</div>
-          <div class="p-2 bg-warning">Flex item 2</div>
-          <div class="p-2 bg-primary">Flex item 3</div>
-        </div> -->
-      
+      <!-- <li>
+        
+      </li> -->
+    </ul>
+    <div class="d-flex justify-content-end mb-3 align-items-center">
+      <div class="p-5"></div>
+      <div class="p-5"></div>
+      <div class="p-2">
+        <app-student-search></app-student-search>
       </div>
-    </nav>
+    </div>
+    <!-- <form class="form-inline my-2 my-lg-0"> -->
+
+
+    <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    <!-- </form> -->
+
+  </div>
+</nav>
+
+
 
 
 
 <!-- <nav> -->
-  <!-- absolute path adalah /heroes -->
-  <!-- <a routerLink="/dashboard">Dashboard</a>
+<!-- absolute path adalah /heroes -->
+<!-- <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a> -->
 <!-- </nav> -->
 <!-- <app-heroes></app-heroes> -->
+
 <div class="container-fluid">
+  <!-- router-outlet untuk mengetahui rute yang akan di view 
+    selector router-outlet untuk menggantikan selector dashboard-->
   <router-outlet></router-outlet>
-  <app-messages></app-messages>
+  <!-- <app-messages></app-messages> -->
+  <!-- <app-navbar></app-navbar> -->
 </div>

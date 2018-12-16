@@ -1,14 +1,25 @@
 /* HeroSearch private styles */
-.search-result li {
+
+/* #search-component {
+    border-style: inherit;
+} */
+
+ #search-box {
+    width: 200px;
+    height: fit-content;
+  }
+
+/* .search-result li {
     border-bottom: 1px solid gray;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
-    width:195px;
-    height: 16px;
+    width: 200px;
+    height: 25px;
     padding: 5px;
     background-color: white;
     cursor: pointer;
     list-style-type: none;
+    position: fixed;
   }
   
   .search-result li:hover {
@@ -27,15 +38,11 @@
   .search-result li a:active {
     color: white;
   }
-  #search-box {
-    width: 200px;
-    height: 20px;
-  }
-  
-  
-  ul.search-result {
+
+
+ul.search-result {
     margin-top: 0;
     padding-left: 0;
     position: fixed;
     z-index: 50;
-  }
+  } */

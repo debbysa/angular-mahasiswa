@@ -1,5 +1,5 @@
 import { NgModule }       from '@angular/core';
-import {NgbModule}        from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule }      from '@ng-bootstrap/ng-bootstrap';
 
 
 import { BrowserModule }  from '@angular/platform-browser';
@@ -15,9 +15,13 @@ import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { HeroesComponent }      from './heroes/heroes.component';
+
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { MessagesComponent }    from './messages/messages.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent }      from './navbar/navbar.component';
+import { StudentsComponent }    from './students/students.component';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { StudentSearchComponent } from './student-search/student-search.component';
 
 @NgModule({
   
@@ -25,10 +29,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     DashboardComponent,
     HeroesComponent,
+    StudentsComponent,
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent,
-    NavbarComponent
+    NavbarComponent,
+    StudentsComponent,
+    StudentDetailComponent,
+    StudentSearchComponent
   ],
   imports: [
     BrowserModule,

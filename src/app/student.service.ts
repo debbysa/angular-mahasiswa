@@ -5,9 +5,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs'; //asynchronus javascript
 import { catchError, map, tap } from 'rxjs/operators'; //error handling
 
-import { Hero } from './hero';
+// import { Hero } from './hero';
 // import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
+import { Student } from './student';
+
 
 //konstan ditaruh sebelum decorator
 //httpoption untuk memberitahu apa tipe yang akan di option, yaitu JSON
@@ -15,28 +17,28 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable({ 
+@Injectable({
   providedIn: 'root' 
 })
-export class HeroService {
+export class StudentService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api sebagai end point
+  private studentsUrl = 'api/students';  // URL to web api sebagai end point
   //ketika /heroes di akses dengan method API, maka akan keluar datanya
 
   constructor(
     private http: HttpClient, //inject HttpClient
     private messageService: MessageService
-    ) { }
-    //diatas adl dependency injection = inject service ke service yang lain
+  ) { }
+  //diatas adl dependency injection = inject service ke service yang lain
 
-  /** GET heroes from the server */
-  getHeroes() : Observable<Hero[]> {
-    this.messageService.add('HeroService: fetched heroes');
+  /** GET students from the server */
+  getStudents() : Observable<Student[]> {
+    this.messageService.add('StudentService: fetched students');
 
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Student[]>(this.studentsUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')), //untuk meng asign isinya apa
-        catchError(this.handleError('getHeroes', []))
+        tap(_ => this.log('fetched students')), //untuk meng asign isinya apa
+        catchError(this.handleError('getStudents', []))
       );
     // return of(HEROES);
   }
@@ -46,27 +48,27 @@ export class HeroService {
   // }
 
   /** GET hero by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/?id=${id}`;
-    return this.http.get<Hero[]>(url)
+  getStudentNo404<Data>(id: number): Observable<Student> {
+    const url = `${this.studentsUrl}/?id=${id}`;
+    return this.http.get<Student[]>(url)
       .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
+        map(students => students[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} hero id=${id}`);
+          this.log(`${outcome} student id=${id}`);
         }),
-        catchError(this.handleError<Hero>(`getHero id=${id}`))
+        catchError(this.handleError<Student>(`getStudent id=${id}`))
       );
   }
 
   /** GET hero by id. Will 404 if id not found */
   /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Hero> {
+  getStudent(id: number): Observable<Student> {
 
-    const url = `${this.heroesUrl}/${id}`; //harus ada constant di dalam fungsi
-    return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    const url = `${this.studentsUrl}/${id}`; //harus ada constant di dalam fungsi
+    return this.http.get<Student>(url).pipe(
+      tap(_ => this.log(`fetched student id=${id}`)),
+      catchError(this.handleError<Student>(`getStudent id=${id}`))
     );
 
     //end point nanti ada ID nya => api/heroes/id
@@ -79,15 +81,15 @@ export class HeroService {
   // }
 
   /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<Hero[]> {
+  searchStudents(term: string): Observable<Student[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+    return this.http.get<Student[]>(`${this.studentsUrl}/?name=${term}`)
     .pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
-      catchError(this.handleError<Hero[]>('searchHeroes', []))
+      tap(_ => this.log(`found students matching "${term}"`)),
+      catchError(this.handleError<Student[]>('searchStudents', []))
     );
   }
 
@@ -95,35 +97,35 @@ export class HeroService {
 
   /** POST: add a new hero to the server */
   //name pada heroes TS diubah ke model Hero, agar bisa dipakek di sini
-  addHero (hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+  addStudent (student: Student): Observable<Student> {
+    return this.http.post<Student>(this.studentsUrl, student, httpOptions)
     .pipe(
       tap(
-        (hero: Hero) => this.log(`added hero w/ id=${hero.id}`)
+        (student: Student) => this.log(`added student w/ id=${student.id}`)
         ),
-      catchError(this.handleError<Hero>('addHero'))
+      catchError(this.handleError<Student>('addStudent'))
     );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteHero (hero: Hero | number): Observable<Hero> {
+  deleteStudent (student: Student | number): Observable<Student> {
     //typeof untuk mengecek tipe data 
-    const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+    const id = typeof student === 'number' ? student : student.id;
+    const url = `${this.studentsUrl}/${id}`;
 
-    return this.http.delete<Hero>(url, httpOptions) //method delete API
+    return this.http.delete<Student>(url, httpOptions) //method delete API
     .pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)), 
-      catchError(this.handleError<Hero>('deleteHero'))
+      tap(_ => this.log(`deleted student id=${id}`)), 
+      catchError(this.handleError<Student>('deleteStudent'))
     );
   }
 
   /** PUT: update the hero on the server */
   // update dipanggil di hero detail.ts
-  updateHero (hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+  updateStudent (student: Student): Observable<any> {
+    return this.http.put(this.studentsUrl, student, httpOptions).pipe(
+      tap(_ => this.log(`updated student id=${student.id}`)),
+      catchError(this.handleError<any>('updateStudent'))
     );
   }
 
@@ -149,9 +151,8 @@ export class HeroService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`StudentService: ${message}`);
   }
   //${} manipulasi string biasa
   //kalau di typescript bermasalah jika string harus ke string juga
-
 }
