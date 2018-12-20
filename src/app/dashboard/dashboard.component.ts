@@ -14,10 +14,13 @@ import { StudentService } from '../student.service';
 export class DashboardComponent implements OnInit {
   students: Student[] = [];
 
-  @Input() page: number; //the current page
-  @Input() count: number;
-  @Input() perPage: number;
-  @Input() pageToShow: number;
+  page: number = 2; //the current page
+  itemsPerPage: number = 10;
+  totalItems: number = 20;
+
+  // @Input() count: number;
+  // @Input() perPage: number;
+  // @Input() pageToShow: number;
 
   constructor(private studentService: StudentService) { }
 
@@ -26,8 +29,15 @@ export class DashboardComponent implements OnInit {
     // this.getStudents2();
   }
 
-  ngOnChange() {
-    this.getStudents2();
+  loadPage(page: number) {
+    this.loadData();
+  }
+
+  loadData() {
+    if (this.page) {
+      this.studentService.getStudents()
+        .subscribe(students => this.students = students.slice(10, 20));
+    }
   }
 
   getStudents(): void {

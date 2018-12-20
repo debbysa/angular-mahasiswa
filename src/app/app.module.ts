@@ -43,7 +43,7 @@ import { StudentSearchComponent } from './student-search/student-search.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
+    NgbModule.forRoot(),
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

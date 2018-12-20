@@ -1,28 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Student } from '../student'; //import nama class Student diluar folder
 import { StudentService } from '../student.service';
 
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: #292b2c;
+      color: white;
+    }
+    .dark-modal .close {
+      color: white;
+    }
+    .light-blue-backdrop {
+      background-color: #5cb3fd;
+    }
+  `]
+  // styleUrls: ['./students.component.css'],
 })
 
 export class StudentsComponent implements OnInit {
-  students: Student[];
-  // form: FormGroup;
+  closeResult: string;
 
+  students: Student[];
   selectedStudent: Student;
 
   form = new FormGroup({
     gender: new FormControl(Validators.required),
   });
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService,
+    private modalService: NgbModal) {
     // this.form = fb.group({
     //   gender: ['', Validators.required]
     // });
@@ -33,6 +48,9 @@ export class StudentsComponent implements OnInit {
     this.getStudents();
   }
 
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
+  }
 
   getStudents(): void {
     //asynchronus
@@ -69,6 +87,12 @@ export class StudentsComponent implements OnInit {
       });
 
   }
+
+  onChange(event: any) {
+    console.log(event.target.value)
+    this.selectedStudent = event.target.value
+  }
+
 
   delete(student: Student): void {
     this.students = this.students.filter(h => h !== student);
