@@ -1,0 +1,50 @@
+<div *ngIf="student">
+  <h2>{{student.name | uppercase}} Details</h2>
+
+  <div class="card bg-light">
+    <div class="card-body text-left">
+      <span>id: </span><b> {{student.id}} </b>
+    </div>
+    <div class="card-body text-left">
+      <label>nama:
+        <input [(ngModel)]="student.name" placeholder="name" />
+        <!-- ngModel untuk mengupdate, dimana data nantinya langsung berkomunikasi dengan controller -->
+      </label>
+    </div>
+    <div class="card-body text-left">
+      nim
+      <input [(ngModel)]="student.nim">
+    </div>
+    <div class="card-body text-left">
+      <b>alamat</b>
+      <input [(ngModel)]="student.alamat" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>Jenis Kelamin</b>
+      <input [(ngModel)]="student.jnsKelamin" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>Jurusan</b>
+      <input [(ngModel)]="student.jurusan" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>Program Studi</b>
+      <input [(ngModel)]="student.prodi" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>IPK Terakhir</b>
+      <input [(ngModel)]="student.IPK" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>Father</b>
+      <input [(ngModel)]="student.namaBapak" placeholder="name" />
+    </div>
+    <div class="card-body text-left">
+      <b>Mother</b>
+      <input [(ngModel)]="student.namaIbu" placeholder="name" />
+    </div>
+  </div>
+  <br />
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

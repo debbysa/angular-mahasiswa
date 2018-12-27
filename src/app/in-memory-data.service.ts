@@ -15,7 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const students = [
       {
         id: 11,
-        name: 'Mr. Nice',
+        name: 'Denathan',
         nim: 17317100,
         jnsKelamin: 'L',
         alamat: 'canada',
@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 12,
-        name: 'Narco',
+        name: 'Abdillah',
         nim: 17317101,
         jnsKelamin: 'L',
         alamat: 'canberra',
@@ -39,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 13,
-        name: 'Bombasto',
+        name: 'Luna',
         nim: 17317102,
         jnsKelamin: 'L',
         alamat: 'new york',
@@ -63,7 +63,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 15,
-        name: 'Magneta',
+        name: 'Mareta',
         nim: 17317104,
         jnsKelamin: 'P',
         alamat: 'hanoi',
@@ -87,7 +87,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 17,
-        name: 'Dynama',
+        name: 'Alissya',
         nim: 17317106,
         jnsKelamin: 'L',
         alamat: 'tokyo',
@@ -99,7 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 18,
-        name: 'Dr IQ',
+        name: 'Devanda',
         nim: 17317107,
         jnsKelamin: 'L',
         alamat: 'turki',
@@ -111,7 +111,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 19,
-        name: 'Magma',
+        name: 'Mariska',
         nim: 17317108,
         jnsKelamin: 'L',
         alamat: 'canada',
@@ -123,7 +123,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 20,
-        name: 'Tornado',
+        name: 'Tobi',
         nim: 17317109,
         jnsKelamin: 'L',
         alamat: 'new york',

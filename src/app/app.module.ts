@@ -1,30 +1,32 @@
-import { NgModule }       from '@angular/core';
-import { NgbModule }      from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroesComponent } from './heroes/heroes.component';
 
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
-import { MessagesComponent }    from './messages/messages.component';
-import { NavbarComponent }      from './navbar/navbar.component';
-import { StudentsComponent }    from './students/students.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { MessagesComponent } from './messages/messages.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
+import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
+import { UpdateMahasiswaComponent } from './update-mahasiswa/update-mahasiswa.component';
 
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -36,7 +38,9 @@ import { StudentSearchComponent } from './student-search/student-search.componen
     NavbarComponent,
     StudentsComponent,
     StudentDetailComponent,
-    StudentSearchComponent
+    StudentSearchComponent,
+    AddMahasiswaComponent,
+    UpdateMahasiswaComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,6 @@ import { StudentSearchComponent } from './student-search/student-search.componen
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

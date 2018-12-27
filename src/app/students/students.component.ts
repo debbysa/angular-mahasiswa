@@ -1,55 +1,46 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Student } from '../student'; //import nama class Student diluar folder
 import { StudentService } from '../student.service';
-
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-students',
-  templateUrl: './students.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styles: [`
-    .dark-modal .modal-content {
-      background-color: #292b2c;
-      color: white;
-    }
-    .dark-modal .close {
-      color: white;
-    }
-    .light-blue-backdrop {
-      background-color: #5cb3fd;
-    }
-  `]
+  templateUrl: './students.component.html'
   // styleUrls: ['./students.component.css'],
 })
 
 export class StudentsComponent implements OnInit {
-  closeResult: string;
 
   students: Student[];
+  value = [];
   selectedStudent: Student;
+  closeResult: string;
 
-  form = new FormGroup({
-    gender: new FormControl(Validators.required),
-  });
+  constructor(private modalService: NgbModal, private studentService: StudentService) { }
 
-  constructor(private studentService: StudentService,
-    private modalService: NgbModal) {
-    // this.form = fb.group({
-    //   gender: ['', Validators.required]
-    // });
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 
   ngOnInit() {
     this.getStudents();
-  }
-
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
   }
 
   getStudents(): void {
@@ -59,7 +50,7 @@ export class StudentsComponent implements OnInit {
     //harus dimasukkan dalam properti students di file ini
   }
 
-  add(name: string, nim: number, alamat: string, jurusan: string, prodi: string, father: string, mother: string)
+  add(id: number, name: string, nim: number, alamat: string, jurusan: string, prodi: string, father: string, mother: string)
     : void {
     name = name.trim();
     alamat = alamat.trim();
@@ -81,18 +72,30 @@ export class StudentsComponent implements OnInit {
     //   return;
     // }
 
-    this.studentService.addStudent({ name, nim, alamat, jurusan, prodi } as Student) // jika tidak kosong, maka masuk perintah ini
+    this.value.push({
+      id,
+      name,
+      nim,
+      alamat,
+      jurusan,
+      prodi,
+      father,
+      mother,
+    });
+
+    this.studentService.addStudent({
+      id,
+      name,
+      nim,
+      alamat,
+      jurusan,
+      prodi
+    } as Student) // jika tidak kosong, maka masuk perintah ini
       .subscribe(student => {
         this.students.push(student);
       });
 
   }
-
-  onChange(event: any) {
-    console.log(event.target.value)
-    this.selectedStudent = event.target.value
-  }
-
 
   delete(student: Student): void {
     this.students = this.students.filter(h => h !== student);

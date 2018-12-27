@@ -31,7 +31,7 @@ heroName.value=''">
 
 <!-- modal -->
 
-<ng-template #content let-modal>
+<!-- <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Tambah Data Mahasiswa</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -135,96 +135,94 @@ heroName.value=''">
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
-</ng-template>
+</ng-template> -->
 
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>
 
 
 <!-- akhir modal -->
 
-<div class="ml-2 container-fluid">
-  <form>
+
+<!-- <form>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Nama Lengkap
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentName>
+    </div>
+  </div>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      NIM
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentNIM>
+    </div>
+  </div>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Alamat
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentAlamat>
+    </div>
+  </div>
+  <fieldset class="form-group">
     <div class="form-row ml-3 mt-2">
       <label class="col-sm-2" style="margin-top: 7px;">
-        Nama Lengkap
+        Jenis Kelamin
       </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentName>
-      </div>
-    </div>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        NIM
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentNIM>
-      </div>
-    </div>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        Alamat
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentAlamat>
-      </div>
-    </div>
-    <fieldset class="form-group">
-      <div class="form-row ml-3 mt-2">
-        <label class="col-sm-2" style="margin-top: 7px;">
-          Jenis Kelamin
-        </label>
-        <div class="col-sm-3">
-          <div class="form-check form-check-inline" style="margin-top: 7px;">
-            <input #studentJnsKel type="radio" name="jnsKel" id="l" value="l" style="padding: 10px 10px 5px;" (change)=onChange($event)>
-            <label #studentJnsKel class="form-check-label">
-              Laki - laki
-            </label>
-          </div>
-          <div class="form-check form-check-inline" style="margin-top: 7px;">
-            <input #studentJnsKel type="radio" name="jnsKel" id="p" value="p" style="padding: 10px 10px 5px;">
-            <label #studentJnsKel class="form-check-label">
-              Perempuan
-            </label>
-          </div>
+      <div class="col-sm-3">
+        <div class="form-check form-check-inline" style="margin-top: 7px;">
+          <input #studentJnsKel type="radio" name="jnsKel" id="l" value="l" style="padding: 10px 10px 5px;" (change)=onChange($event)>
+          <label #studentJnsKel class="form-check-label">
+            Laki - laki
+          </label>
+        </div>
+        <div class="form-check form-check-inline" style="margin-top: 7px;">
+          <input #studentJnsKel type="radio" name="jnsKel" id="p" value="p" style="padding: 10px 10px 5px;">
+          <label #studentJnsKel class="form-check-label">
+            Perempuan
+          </label>
         </div>
       </div>
-    </fieldset>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        Jurusan
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentJurusan>
-      </div>
     </div>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        Program Studi
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentProdi>
-      </div>
+  </fieldset>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Jurusan
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentJurusan>
     </div>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        Father
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentFather>
-      </div>
+  </div>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Program Studi
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentProdi>
     </div>
-    <div class="form-row ml-3 mt-2">
-      <label class="col-sm-2" style="margin-top: 7px;">
-        Mother
-      </label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" #studentMother>
-      </div>
+  </div>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Father
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentFather>
     </div>
-  </form>
+  </div>
+  <div class="form-row ml-3 mt-2">
+    <label class="col-sm-2" style="margin-top: 7px;">
+      Mother
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" #studentMother>
+    </div>
+  </div>
+</form> -->
 
-</div>
-<div class="col-sm-8 container-fluid" style="padding: 15px 0px 0px 0px;">
+<!-- <div class="col-sm-8 container-fluid" style="padding: 15px 0px 0px 0px;">
   <div class="d-flex justify-content-end">
     <div>
       <button type="button" class="btn btn-primary text-white" (click)="add(
@@ -258,20 +256,29 @@ heroName.value=''">
       </button>
     </div>
   </div>
-</div>
+</div> -->
 
-<!-- <form [formGroup]="
-      form">
-      <label>
-        <input type="radio" value="Male" formControlName="gender">
-        <span>male</span>
-      </label>
-      <label>
-        <input type="radio" value="Female" formControlName="gender">
-        <span>female</span>
-      </label>
-      </form> -->
+<!-- modal -->
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-mahasiswa></app-add-mahasiswa>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<!-- akhir modal -->
+
+<!-- tombol add data -->
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="open(content)">Add Mahasiswa</button>
 
 
 <table class="table">
@@ -315,6 +322,7 @@ heroName.value=''">
         {{ student.IPK }}
       </td>
       <td>
+        <button class="btn btn-info" title="update student" routerLink="/update/{{student.id}}">Update</button>
         <button class="btn btn-danger" title="delete student" (click)="delete(student)"> X </button>
       </td>
     </tr>
@@ -325,13 +333,14 @@ heroName.value=''">
 
 
 
-<div class="col-sm-11 container-fluid">
+<!-- <div class="col-sm-11 container-fluid">
   <ul class="students">
     <li *ngFor="let student of students">
       <a routerLink="/detail/{{student.id}}">
         <span class="badge">{{student.id}}</span> {{student.name}}
       </a>
-      <button class="delete" title="delete student" (click)="delete(student)"> x </button>
+      <button class="btn btn-info" title="update student">Update</button>
+      <button class="btn btn-danger" title="delete student" (click)="delete(student)"> x </button>
     </li>
   </ul>
-</div>
+</div> -->

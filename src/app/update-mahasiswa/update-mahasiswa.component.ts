@@ -6,13 +6,12 @@ import { Location } from '@angular/common';
 import { Student } from '../student';
 import { StudentService } from '../student.service';
 
-
 @Component({
-  selector: 'app-student-detail',
-  templateUrl: './student-detail.component.html',
-  styleUrls: ['./student-detail.component.css']
+  selector: 'app-update-mahasiswa',
+  templateUrl: './update-mahasiswa.component.html',
+  styleUrls: ['./update-mahasiswa.component.css']
 })
-export class StudentDetailComponent implements OnInit {
+export class UpdateMahasiswaComponent implements OnInit {
 
   //single objek
   @Input() student: Student; //komunikasi antara Student dan student-detail
